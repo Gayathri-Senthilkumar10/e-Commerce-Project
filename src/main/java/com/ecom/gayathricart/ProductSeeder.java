@@ -1,7 +1,7 @@
 package com.ecom.gayathricart;
 
 import com.ecom.gayathricart.model.Product;
-import com.ecom.gayathricart.repository.ProjectRepository;
+import com.ecom.gayathricart.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,12 +14,12 @@ import java.util.List;
 public class ProductSeeder implements CommandLineRunner {
 
     @Autowired
-    private ProjectRepository projectRepository;
+    private ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
 
-        if (projectRepository.count() == 0) {
+        if (productRepository.count() == 0) {
 
             List<Product> dummyData = List.of(
 
@@ -84,7 +84,7 @@ public class ProductSeeder implements CommandLineRunner {
                     )
             );
 
-            projectRepository.saveAll(dummyData);
+            productRepository.saveAll(dummyData);
 
             System.out.println("Products to save = " + dummyData.size());
             System.out.println("Dummy data saved successfully!");
